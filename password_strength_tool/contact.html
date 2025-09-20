@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PasswordStrength Online</title>
+    <meta name="description" content="Contact PasswordStrength Online. Get in touch with us for questions, feedback, or support regarding our free password security tools.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="password_logo.png">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <img src="password_logo.png" alt="PasswordStrength Online" class="brand-logo">
+                <span class="brand-text">PasswordStrength Online</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="dropdown">
+                    <button class="nav-link dropdown-toggle" id="toolsDropdown" aria-expanded="false">
+                        Tools
+                        <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu" id="toolsDropdownMenu">
+                        <a href="index.html#home" class="dropdown-item">Password Strength Checker</a>
+                        <a href="generator.html" class="dropdown-item">Password Generator</a>
+                    </div>
+                </div>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <div class="mobile-dropdown">
+                <button class="mobile-nav-link mobile-dropdown-toggle" id="mobileToolsToggle" aria-expanded="false">
+                    Tools
+                    <svg class="mobile-dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="mobile-dropdown-menu" id="mobileToolsMenu">
+                    <a href="index.html#home" class="mobile-dropdown-item">Password Strength Checker</a>
+                    <a href="generator.html" class="mobile-dropdown-item">Password Generator</a>
+                </div>
+            </div>
+            <a href="blog.html" class="mobile-nav-link">Blog</a>
+            <a href="about.html" class="mobile-nav-link">About Us</a>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="page-section">
+        <div class="container">
+            <div class="page-header">
+                <h1>Contact Us</h1>
+                <p>Get in touch with us for questions, feedback, or support.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2>How Can We Help?</h2>
+                        <p>We're here to help with any questions about password security, our tools, or suggestions for improvement. While we're a small team focused on building great security tools, we value your feedback and try to respond to all inquiries.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>Email Support</h4>
+                                    <p>Send us an email and we'll get back to you as soon as possible.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 6v6l4 2"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>Response Time</h4>
+                                    <p>We typically respond within 24-48 hours during business days.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                        <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>Privacy First</h4>
+                                    <p>Your contact information is kept private and never shared with third parties.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-topics">
+                            <h3>Common Topics</h3>
+                            <ul class="privacy-list">
+                                <li>Technical questions about our tools</li>
+                                <li>Suggestions for new features</li>
+                                <li>Reporting bugs or issues</li>
+                                <li>General password security advice</li>
+                                <li>Partnership inquiries</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <div class="contact-form-card">
+                            <h3>Send us a Message</h3>
+                            <form class="contact-form" id="contactForm">
+                                <div class="form-group">
+                                    <label for="contactName" class="form-label">Name <span class="required">*</span></label>
+                                    <input type="text" id="contactName" name="name" class="form-input" required placeholder="Your full name">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactEmail" class="form-label">Email <span class="required">*</span></label>
+                                    <input type="email" id="contactEmail" name="email" class="form-input" required placeholder="your.email@example.com">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactSubject" class="form-label">Subject</label>
+                                    <select id="contactSubject" name="subject" class="form-select">
+                                        <option value="">Select a topic (optional)</option>
+                                        <option value="general">General Question</option>
+                                        <option value="technical">Technical Support</option>
+                                        <option value="bug">Bug Report</option>
+                                        <option value="feature">Feature Request</option>
+                                        <option value="partnership">Partnership Inquiry</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactMessage" class="form-label">Message <span class="required">*</span></label>
+                                    <textarea id="contactMessage" name="message" class="form-textarea" required placeholder="Please describe your question or feedback in detail..." rows="6"></textarea>
+                                </div>
+                                
+                                <div class="form-notice">
+                                    <p>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <path d="M12 16v-4"/>
+                                            <path d="M12 8h.01"/>
+                                        </svg>
+                                        This form is for demonstration purposes. In a live environment, this would send your message to our support team.
+                                    </p>
+                                </div>
+                                
+                                <button type="submit" class="form-submit">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 2L11 13"/>
+                                        <path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+                                    </svg>
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="password_logo.png" alt="PasswordStrength Online" class="brand-logo">
+                    <span>PasswordStrength Online</span>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Tools</h4>
+                        <a href="index.html#home">Password Checker</a>
+                        <a href="generator.html">Password Generator</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PasswordStrength Online. All rights reserved. Made with security in mind.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

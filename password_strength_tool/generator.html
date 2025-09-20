@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator - PasswordStrength Online</title>
+    <meta name="description" content="Generate strong, secure passwords with our free online password generator. Customize length, character types, and security options.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="password_logo.png">
+    
+    <!-- Heroicons removed due to CORS issues - using inline SVG instead -->
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <img src="password_logo.png" alt="PasswordStrength Online" class="brand-logo">
+                <span class="brand-text">PasswordStrength Online</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="dropdown">
+                    <button class="nav-link dropdown-toggle active" id="toolsDropdown" aria-expanded="false">
+                        Tools
+                        <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu" id="toolsDropdownMenu">
+                        <a href="index.html#home" class="dropdown-item">Password Strength Checker</a>
+                        <a href="generator.html" class="dropdown-item active">Password Generator</a>
+                    </div>
+                </div>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <div class="mobile-dropdown">
+                <button class="mobile-nav-link mobile-dropdown-toggle active" id="mobileToolsToggle" aria-expanded="false">
+                    Tools
+                    <svg class="mobile-dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="mobile-dropdown-menu" id="mobileToolsMenu">
+                    <a href="index.html#home" class="mobile-dropdown-item">Password Strength Checker</a>
+                    <a href="generator.html" class="mobile-dropdown-item active">Password Generator</a>
+                </div>
+            </div>
+            <a href="blog.html" class="mobile-nav-link">Blog</a>
+            <a href="about.html" class="mobile-nav-link">About Us</a>
+        </div>
+    </nav>
+
+    <!-- Password Generator Section -->
+    <section class="generator-section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Secure Password Generator</h1>
+                <p>Generate strong, unique passwords with customizable options</p>
+            </div>
+            
+            <div class="generator-card">
+                <div class="generator-result">
+                    <div class="password-display">
+                        <input type="text" id="generatedPassword" class="generated-password" readonly placeholder="Click generate to create a password">
+                        <button class="copy-button" id="copyButton" aria-label="Copy password">
+                            <svg class="copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                            </svg>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <button class="generate-button" id="generateButton">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 4v6h6"/>
+                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                        </svg>
+                        Generate Password
+                    </button>
+                </div>
+                
+                <div class="generator-options">
+                    <div class="option-group">
+                        <label for="lengthSlider" class="option-label">
+                            Password Length: <span id="lengthValue">12</span>
+                        </label>
+                        <input type="range" id="lengthSlider" class="length-slider" min="4" max="128" value="12">
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="includeUppercase" checked>
+                            <span class="checkmark"></span>
+                            Uppercase Letters (A-Z)
+                        </label>
+                        
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="includeLowercase" checked>
+                            <span class="checkmark"></span>
+                            Lowercase Letters (a-z)
+                        </label>
+                        
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="includeNumbers" checked>
+                            <span class="checkmark"></span>
+                            Numbers (0-9)
+                        </label>
+                        
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="includeSymbols">
+                            <span class="checkmark"></span>
+                            Symbols (!@#$%^&*)
+                        </label>
+                        
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="excludeAmbiguous" checked>
+                            <span class="checkmark"></span>
+                            Exclude Ambiguous Characters (0, O, l, I)
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Affiliate CTA Section - After Password Generator -->
+    <section class="affiliate-cta-section generator-cta">
+        <div class="container">
+            <div class="affiliate-cta-card">
+                <div class="cta-content">
+                    <h3>Ready for Complete Password Management?</h3>
+                    <p>You've generated a strong password - now ensure all your passwords are this secure. A professional password manager automatically generates, stores, and manages unique passwords for every account, making your digital life both more secure and convenient.</p>
+                    <div class="cta-benefits">
+                        <div class="benefit-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"/>
+                            </svg>
+                            <span>Never reuse passwords again</span>
+                        </div>
+                        <div class="benefit-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"/>
+                            </svg>
+                            <span>Auto-fill and auto-save passwords</span>
+                        </div>
+                        <div class="benefit-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"/>
+                            </svg>
+                            <span>Dark web monitoring & alerts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta-action">
+                    <a href="#" class="cta-button" target="_blank" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                        Start Free Trial Today
+                    </a>
+                    <p class="cta-note">30-day money-back guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About This Password Generator Section -->
+    <section class="about-generator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>About This Password Generator</h2>
+                <p>Strong, random passwords are essential in today's digital world. With cybercriminals using advanced techniques to crack weak passwords, relying on predictable combinations puts your accounts at serious risk.</p>
+            </div>
+            
+            <div class="about-generator-content">
+                <div class="about-section">
+                    <h3>Why Random Passwords Matter</h3>
+                    <p>Human-created passwords often follow predictable patterns that hackers exploit. Common patterns include using dictionary words, personal information, or simple character substitutions that automated tools can easily detect.</p>
+                    <p>Our generator uses your browser's built-in cryptographic functions to create truly random combinations that eliminate human bias and predictable patterns, making your passwords exponentially more secure.</p>
+                </div>
+                
+                <div class="about-section">
+                    <h3>How Our Generator Works</h3>
+                    <p>The tool combines multiple character sets (uppercase, lowercase, numbers, symbols) using cryptographically secure randomization algorithms. Each password is unique and generated locally in your browser.</p>
+                    <p>Nothing is stored or transmitted to our servers, ensuring complete privacy. The randomization process uses entropy from your system to create passwords that are mathematically unpredictable.</p>
+                </div>
+                
+                <div class="about-section">
+                    <h3>When to Use This Tool</h3>
+                    <p>Generate new passwords for important accounts like banking, email, and work systems. Use longer passwords (16+ characters) for sensitive accounts and enable unique passwords for every service.</p>
+                    <p>Remember to store these securely using a trusted password manager. Never reuse passwords across multiple accounts, and consider generating new passwords periodically for your most critical accounts.</p>
+                </div>
+            </div>
+                
+                <div class="security-features">
+                    <div class="feature-grid">
+                        <div class="security-feature">
+                            <div class="feature-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                    <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                            <h4>Client-Side Generation</h4>
+                            <p>Your passwords are generated entirely in your browser. No data is ever transmitted to our servers, ensuring complete privacy.</p>
+                        </div>
+                        
+                        <div class="security-feature">
+                            <div class="feature-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                            </div>
+                            <h4>Cryptographically Secure</h4>
+                            <p>Uses your browser's built-in cryptographic functions to ensure true randomness and unpredictability.</p>
+                        </div>
+                        
+                        <div class="security-feature">
+                            <div class="feature-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="m9 12 2 2 4-4"/>
+                                </svg>
+                            </div>
+                            <h4>Customizable Options</h4>
+                            <p>Choose the perfect balance of security and usability with our flexible character set options.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about password security and our generator tool.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How long should my password be?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We recommend at least 12 characters for personal accounts and 16+ characters for sensitive accounts. Longer passwords exponentially increase security - a 12-character password has trillions of possible combinations, while a 16-character password has quintillions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Should I use special characters in my passwords?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, including special characters significantly increases password strength by expanding the character set. However, ensure the service you're using accepts the special characters you choose. Some systems have restrictions on certain symbols.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Is it safe to use an online password generator?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our password generator is completely safe because it runs entirely in your browser using client-side JavaScript. Your passwords never leave your device or get transmitted to any server. Always verify this when choosing a password generator tool.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How often should I change my passwords?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Change passwords immediately if you suspect a breach, every 90 days for high-security accounts, and annually for regular accounts. However, using unique, strong passwords for each account is more important than frequent changes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I use the same strong password for multiple accounts?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No, never reuse passwords across accounts, even if they're strong. If one service gets breached, all your accounts become vulnerable. Use a unique password for every account and consider a password manager to keep track of them.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="password_logo.png" alt="PasswordStrength Online" class="brand-logo">
+                    <span>PasswordStrength Online</span>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Tools</h4>
+                        <a href="index.html#home">Password Checker</a>
+                        <a href="generator.html">Password Generator</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PasswordStrength Online. All rights reserved. Made with security in mind.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

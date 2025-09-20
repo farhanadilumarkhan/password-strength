@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Security Tools - Free Online Password Checker & Generator</title>
+    <meta name="description" content="Free online password strength checker and secure password generator. Check password strength instantly and create strong passwords with our security tools.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="password_logo.png">
+    
+    <!-- Heroicons removed due to CORS issues - using inline SVG instead -->
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <img src="password_logo.png" alt="Password Strength Online" class="brand-logo">
+                <span class="brand-text">Password Strength Online</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <div class="dropdown">
+                    <button class="nav-link dropdown-toggle" id="toolsDropdown" aria-expanded="false">
+                        Tools
+                        <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu" id="toolsDropdownMenu">
+                        <a href="index.html#home" class="dropdown-item">Password Strength Checker</a>
+                        <a href="generator.html" class="dropdown-item">Password Generator</a>
+                    </div>
+                </div>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <div class="mobile-dropdown">
+                <button class="mobile-nav-link mobile-dropdown-toggle" id="mobileToolsToggle" aria-expanded="false">
+                    Tools
+                    <svg class="mobile-dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="mobile-dropdown-menu" id="mobileToolsMenu">
+                    <a href="index.html#home" class="mobile-dropdown-item">Password Strength Checker</a>
+                    <a href="generator.html" class="mobile-dropdown-item">Password Generator</a>
+                </div>
+            </div>
+            <a href="blog.html" class="mobile-nav-link">Blog</a>
+            <a href="about.html" class="mobile-nav-link">About Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Password Checker -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Check Your Password Strength Instantly</h1>
+                    <p>Ensure your passwords are secure with our free online password strength checker. Get instant feedback and improve your digital security.</p>
+                </div>
+                
+                <div class="password-checker-card">
+                    <h2>Password Strength Checker</h2>
+                    <div class="input-group">
+                        <input type="password" id="passwordInput" class="password-input" placeholder="Enter your password to check its strength...">
+                        <button class="toggle-visibility" id="toggleVisibility" aria-label="Toggle password visibility">
+                            <svg class="eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <svg class="eye-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                <line x1="1" y1="1" x2="23" y2="23"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="strength-meter">
+                        <div class="strength-bar" id="strengthBar"></div>
+                        <div class="strength-labels">
+                            <span>Weak</span>
+                            <span>Fair</span>
+                            <span>Good</span>
+                            <span>Strong</span>
+                        </div>
+                    </div>
+                    
+                    <div class="strength-feedback" id="strengthFeedback">
+                        <p class="strength-text">Enter a password to see its strength</p>
+                        <ul class="criteria-list" id="criteriaList">
+                            <li class="criteria-item" id="lengthCriteria">
+                                <span class="criteria-icon">×</span>
+                                At least 8 characters
+                            </li>
+                            <li class="criteria-item" id="uppercaseCriteria">
+                                <span class="criteria-icon">×</span>
+                                Uppercase letter
+                            </li>
+                            <li class="criteria-item" id="lowercaseCriteria">
+                                <span class="criteria-icon">×</span>
+                                Lowercase letter
+                            </li>
+                            <li class="criteria-item" id="numberCriteria">
+                                <span class="criteria-icon">×</span>
+                                Number
+                            </li>
+                            <li class="criteria-item" id="specialCriteria">
+                                <span class="criteria-icon">×</span>
+                                Special character
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="security-notice">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <p>Your password is checked locally in your browser and never sent to our servers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Affiliate CTA Section - After Password Checker -->
+    <section class="affiliate-cta-section">
+        <div class="container">
+            <div class="affiliate-cta-card">
+                <div class="cta-content">
+                    <h3>Take Your Password Security to the Next Level</h3>
+                    <p>While our tools help you create and check passwords, a professional password manager ensures all your passwords are automatically generated, stored securely, and filled in seamlessly across all your devices.</p>
+                    <div class="cta-benefits">
+                        <div class="benefit-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"/>
+                            </svg>
+                            <span>Automatic strong password generation</span>
+                        </div>
+                        <div class="benefit-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"/>
+                            </svg>
+                            <span>Secure encrypted vault</span>
+                        </div>
+                        <div class="benefit-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"/>
+                            </svg>
+                            <span>Sync across all devices</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta-action">
+                    <a href="#" class="cta-button" target="_blank" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                            <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        Get Professional Password Manager
+                    </a>
+                    <p class="cta-note">Trusted by millions of users worldwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Password Generator Section -->
+    <section id="generator" class="generator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Secure Password Generator</h2>
+                <p>Generate strong, unique passwords with customizable options</p>
+            </div>
+            
+            <div class="generator-card">
+                <div class="generator-result">
+                    <div class="password-display">
+                        <input type="text" id="generatedPassword" class="generated-password" readonly placeholder="Click generate to create a password">
+                        <button class="copy-button" id="copyButton" aria-label="Copy password">
+                            <svg class="copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                            </svg>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <button class="generate-button" id="generateButton">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 4v6h6"/>
+                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                        </svg>
+                        Generate Password
+                    </button>
+                </div>
+                
+                <div class="generator-options">
+                    <div class="option-group">
+                        <label for="lengthSlider" class="option-label">
+                            Password Length: <span id="lengthValue">12</span>
+                        </label>
+                        <input type="range" id="lengthSlider" class="length-slider" min="4" max="128" value="12">
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="includeUppercase" checked>
+                            <span class="checkmark"></span>
+                            Uppercase Letters (A-Z)
+                        </label>
+                        
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="includeLowercase" checked>
+                            <span class="checkmark"></span>
+                            Lowercase Letters (a-z)
+                        </label>
+                        
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="includeNumbers" checked>
+                            <span class="checkmark"></span>
+                            Numbers (0-9)
+                        </label>
+                        
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="includeSymbols">
+                            <span class="checkmark"></span>
+                            Symbols (!@#$%^&*)
+                        </label>
+                        
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="excludeAmbiguous" checked>
+                            <span class="checkmark"></span>
+                            Exclude Ambiguous Characters (0, O, l, I)
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Our Security Tools?</h2>
+                <p>Built with security and privacy in mind</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                            <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>All password checking and generation happens locally in your browser. Your passwords never leave your device.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Instant password strength analysis and secure password generation powered by modern cryptographic algorithms.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Always Free</h3>
+                    <p>No registration required, no hidden fees. Our security tools are completely free to use forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About This Tool Section -->
+    <section class="about-generator-section" id="about-tool">
+        <div class="container">
+            <div class="section-header">
+                <h2>About This Password Strength Checker</h2>
+                <p>Understanding password security is crucial in today's digital world. With cybercriminals using sophisticated techniques to crack weak passwords, knowing your password's strength helps protect your accounts from unauthorized access.</p>
+            </div>
+            
+            <div class="about-generator-content">
+                <div class="about-section">
+                    <h3>Why Password Strength Matters</h3>
+                    <p>Weak passwords are the leading cause of account breaches. Hackers use automated tools and massive databases of common passwords to crack weak credentials in seconds. Even simple substitutions like "P@ssw0rd" follow predictable patterns that modern attacks can easily identify.</p>
+                    <p>Our strength checker analyzes your password against real-world attack methods, giving you instant feedback about vulnerabilities and helping you understand what makes a password truly secure.</p>
+                </div>
+                
+                <div class="about-section">
+                    <h3>How Our Checker Works</h3>
+                    <p>Our tool evaluates multiple security factors including length, character diversity, pattern recognition, and comparison against known weak password databases. It calculates entropy and estimates crack time using modern attack methods.</p>
+                    <p>All analysis happens locally in your browser using JavaScript. Your password never leaves your device or gets transmitted to our servers, ensuring complete privacy and security during the checking process.</p>
+                </div>
+                
+                <div class="about-section">
+                    <h3>When to Use This Tool</h3>
+                    <p>Check existing passwords before important account updates, evaluate new passwords before setting them, and understand why certain passwords are flagged as weak by other systems.</p>
+                    <p>Use this tool as part of your overall security strategy. Remember to use unique passwords for every account and consider using a password manager to generate and store strong, unique passwords securely.</p>
+                </div>
+            </div>
+                
+            <div class="security-features">
+                <div class="feature-grid">
+                    <div class="security-feature">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
+                        <h4>Complete Privacy</h4>
+                        <p>Your passwords are analyzed entirely in your browser. No data is ever transmitted to our servers, ensuring complete privacy.</p>
+                    </div>
+                    
+                    <div class="security-feature">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <h4>Real-time Analysis</h4>
+                        <p>Instant feedback as you type, with detailed explanations of what makes your password strong or weak.</p>
+                    </div>
+                    
+                    <div class="security-feature">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="m9 12 2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h4>Industry Standards</h4>
+                        <p>Based on current cybersecurity best practices and real-world attack methods used by security professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Password Security Guide Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Password Security Guide</h2>
+                <p>Essential information to help you understand and maintain strong password security for all your accounts.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What Makes a Password Strong</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A strong password typically includes at least 8 characters and combines uppercase and lowercase letters, numbers, and special characters. Length is more important than complexity - a 12-character password is significantly stronger than an 8-character one.</p>
+                        <p>Avoid easily guessable information like names, dates, or common words. Strong passwords should be unique and not contain predictable patterns that automated tools can easily identify.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Safety of Online Password Checkers</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our password checker is completely safe to use because it runs entirely in your browser using JavaScript. Your password is never transmitted to our servers or stored anywhere - all analysis happens locally on your device.</p>
+                        <p>When choosing any password security tool, always verify that processing happens client-side and that no data is transmitted to external servers. This ensures your sensitive information remains private and secure.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Password Change Frequency</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Change passwords immediately if you suspect they've been compromised or if a service you use reports a data breach. For regular maintenance, focus on using unique, strong passwords for each account rather than frequent changes.</p>
+                        <p>A password manager can help you maintain unique passwords across all your accounts, making it easier to follow security best practices without the burden of remembering complex passwords.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Benefits of Password Managers</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Password managers are one of the best tools for maintaining good password security. They generate unique, strong passwords for each account and remember them for you, eliminating the need to reuse weak passwords across multiple services.</p>
+                        <p>Modern password managers also provide features like secure sharing, dark web monitoring, and automatic password updates when breaches are detected, making them essential tools for comprehensive digital security.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="password_logo.png" alt="PasswordStrength Online" class="brand-logo">
+                    <span>PasswordStrength Online</span>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Tools</h4>
+                        <a href="index.html#home">Password Checker</a>
+                        <a href="generator.html">Password Generator</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PasswordStrength Online. All rights reserved. Made with security in mind.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
